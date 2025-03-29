@@ -102,7 +102,7 @@ export default function About() {
             <div className="relative lg:order-last lg:col-span-5">
               <figure className="border-l border-rose-600 pl-8">
                 <blockquote className="text-xl font-semibold leading-8 tracking-tight text-gray-900">
-                  <p>"Our passion for baking is matched only by our commitment to quality and customer satisfaction."</p>
+                  <p>&ldquo;Our passion for baking is matched only by our commitment to quality and customer satisfaction.&rdquo;</p>
                 </blockquote>
                 <figcaption className="mt-8 flex gap-x-4">
                   <div className="text-sm leading-6">
