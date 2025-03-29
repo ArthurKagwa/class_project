@@ -125,7 +125,7 @@ export default function About() {
       </div>
 
       {/* Values Section */}
-      <div className="py-24 sm:py-32">
+      <div className="py-24 sm:py-32 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
             <motion.h2
@@ -149,58 +149,163 @@ export default function About() {
           </div>
 
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="flex flex-col"
-              >
-                <dt className="text-base font-semibold leading-7 text-gray-900">
-                  Vision
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">
-                    To become the leading bakery in Uganda up to date and customer friendly bakery services
-                  </p>
-                </dd>
-                <div className="mt-8">
-                  <Image
-                    src="/images/bakery-interior.jpg"
-                    alt="Bakery Interior"
-                    width={600}
-                    height={400}
-                    className="rounded-2xl object-cover"
-                  />
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="flex flex-col"
-              >
-                <dt className="text-base font-semibold leading-7 text-gray-900">
-                  Mission
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                  <p className="flex-auto">
-                    To provide our customers with exceptional baked goods that exceed their expectations in taste, quality and presentation
-                  </p>
-                </dd>
-                <div className="mt-8">
-                  <Image
-                    src="/images/bakery-baking.jpg"
-                    alt="Baking Process"
-                    width={600}
-                    height={400}
-                    className="rounded-2xl object-cover"
-                  />
-                </div>
-              </motion.div>
+            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4">
+              {values.map((value, index) => (
+                <motion.div
+                  key={value.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center text-center"
+                >
+                  <dt className="text-3xl mb-4">{value.icon}</dt>
+                  <dt className="text-base font-semibold leading-7 text-gray-900">{value.name}</dt>
+                  <dd className="mt-1 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                    <p className="flex-auto">{value.description}</p>
+                  </dd>
+                </motion.div>
+              ))}
             </dl>
+          </div>
+        </div>
+      </div>
+
+      {/* Timeline Section */}
+      <div className="py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-base font-semibold leading-7 text-rose-600"
+            >
+              Our Journey
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              The Sweet Bliss Story
+            </motion.p>
+          </div>
+
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24">
+            <div className="space-y-8">
+              {timeline.map((event, index) => (
+                <motion.div
+                  key={event.date}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-rose-600" />
+                    </div>
+                    <div className="ml-6">
+                      <h3 className="text-lg font-semibold text-gray-900">{event.title}</h3>
+                      <p className="mt-1 text-sm text-gray-500">{event.date}</p>
+                      <p className="mt-2 text-base text-gray-600">{event.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Team Section */}
+      <div className="bg-gray-50 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-base font-semibold leading-7 text-rose-600"
+            >
+              Our Team
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Meet Our Leadership
+            </motion.p>
+          </div>
+
+          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10">
+              {team.map((member) => (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="bg-white rounded-2xl p-10 shadow-lg"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="lg:col-span-1">
+                      <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
+                        <Image
+                          src={member.imageUrl}
+                          alt={member.name}
+                          width={300}
+                          height={300}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="lg:col-span-2">
+                      <div className="text-base leading-7">
+                        <h3 className="font-semibold text-2xl text-gray-900">{member.name}</h3>
+                        <p className="text-rose-600 mt-1">{member.role}</p>
+                      </div>
+                      <div className="mt-6">
+                        <dl className="grid grid-cols-1 gap-4 text-sm leading-6">
+                          <div>
+                            <dt className="font-medium text-gray-900">Education</dt>
+                            <dd className="mt-1 text-gray-600">{member.education}</dd>
+                          </div>
+                          <div>
+                            <dt className="font-medium text-gray-900">Contact</dt>
+                            <dd className="mt-1 text-gray-600">{member.contact}</dd>
+                          </div>
+                          <div>
+                            <dt className="font-medium text-gray-900">Email</dt>
+                            <dd className="mt-1 text-gray-600">{member.email}</dd>
+                          </div>
+                          <div>
+                            <dt className="font-medium text-gray-900">Skills</dt>
+                            <dd className="mt-1 text-gray-600">
+                              <ul className="list-disc pl-4 space-y-1">
+                                {member.skills.map((skill) => (
+                                  <li key={skill}>{skill}</li>
+                                ))}
+                              </ul>
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
