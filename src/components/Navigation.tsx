@@ -34,9 +34,9 @@ export default function Navigation() {
               <Image
                 src="/logo.png"
                 alt="Sweet Bliss Logo"
-                width={150}
-                height={50}
-                className="h-12 w-auto"
+                width={350}
+                height={350}
+                className="h-17 w-auto"
                 priority
               />
             </motion.div>

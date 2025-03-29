@@ -1,6 +1,10 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
+import VisitCounter from "@/components/VisitCounter";
+import { motion } from "framer-motion";
 
 const products = [
   {
@@ -36,6 +40,64 @@ export default function Home() {
       
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden bg-gradient-to-b from-rose-100/20">
+        {/* Decorative image grid */}
+        <div className="absolute left-0 top-0 -z-10 h-full w-1/3 opacity-20">
+          <div className="relative h-full w-full">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute left-[10%] top-[15%] h-24 w-24 overflow-hidden rounded-lg transform rotate-6"
+            >
+              <Image
+                src="/images/cupcake.jpg"
+                alt="Cupcake"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="absolute left-[40%] top-[30%] h-32 w-32 overflow-hidden rounded-lg transform -rotate-3"
+            >
+              <Image
+                src="/images/croissant.jpg"
+                alt="Croissant"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="absolute left-[15%] top-[50%] h-28 w-28 overflow-hidden rounded-lg transform rotate-12"
+            >
+              <Image
+                src="/images/pastry.jpg"
+                alt="Pastry"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="absolute left-[45%] top-[65%] h-24 w-24 overflow-hidden rounded-lg transform -rotate-6"
+            >
+              <Image
+                src="/images/muffin.jpg"
+                alt="Muffin"
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
+        </div>
+
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
           <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
             <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
@@ -56,17 +118,20 @@ export default function Home() {
                 Learn more <span aria-hidden="true">→</span>
               </Link>
             </div>
+            <div className="mt-10">
+              <VisitCounter />
+            </div>
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <Image
+        <Image
                 src="/images/hero-bakery.jpg"
                 alt="Sweet Bliss Bakery"
                 width={1000}
                 height={600}
                 className="w-[76rem] rounded-md bg-gray-50 shadow-xl ring-1 ring-gray-400/10"
-                priority
-              />
+          priority
+        />
             </div>
           </div>
         </div>
@@ -83,10 +148,17 @@ export default function Home() {
           </div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-4">
             {products.map((product) => (
-              <article key={product.name} className="flex flex-col items-start">
+              <motion.article
+                key={product.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-start"
+              >
                 <div className="relative w-full">
                   <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl">
-                    <Image
+            <Image
                       src={product.imageUrl}
                       alt={product.name}
                       width={500}
@@ -109,7 +181,7 @@ export default function Home() {
                     <p className="mt-5 text-sm leading-6 text-gray-600">{product.description}</p>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             ))}
           </div>
         </div>
@@ -130,7 +202,13 @@ export default function Home() {
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
             <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="flex flex-col"
+              >
                 <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
                   Vision
                 </dt>
@@ -139,8 +217,14 @@ export default function Home() {
                     To become the leading bakery in Uganda up to date and customer friendly bakery services
                   </p>
                 </dd>
-              </div>
-              <div className="flex flex-col">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="flex flex-col"
+              >
                 <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
                   Mission
                 </dt>
@@ -149,8 +233,14 @@ export default function Home() {
                     To provide our customers with exceptional baked goods that exceed their expectations in taste, quality and presentation
                   </p>
                 </dd>
-              </div>
-              <div className="flex flex-col">
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="flex flex-col"
+              >
                 <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
                   Contact
                 </dt>
@@ -161,11 +251,11 @@ export default function Home() {
                     Email: sweetbliss@gmail.com
                   </p>
                 </dd>
-              </div>
+              </motion.div>
             </dl>
           </div>
         </div>
-      </div>
+    </div>
     </main>
   );
 }

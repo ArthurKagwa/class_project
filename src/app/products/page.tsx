@@ -100,15 +100,15 @@ export default function Products() {
               <motion.div
                 key={product.name}
                 variants={itemVariants}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.12 }}
                 className="group relative bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="aspect-square w-full overflow-hidden rounded-t-2xl">
                   <Image
                     src={product.imageUrl}
                     alt={product.name}
-                    width={500}
-                    height={500}
+                    width={900}
+                    height={900}
                     className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -141,7 +141,7 @@ export default function Products() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             viewport={{ once: true }}
             className="mt-16 text-center"
           >
@@ -179,14 +179,14 @@ export default function Products() {
               </p>
               <dl className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.12 }}
                   className="rounded-lg bg-gray-50 px-6 py-8"
                 >
                   <dt className="text-base font-semibold text-gray-900">Delivery Areas</dt>
                   <dd className="mt-3 text-sm text-gray-500">Kampala and Central Region</dd>
                 </motion.div>
                 <motion.div
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.12 }}
                   className="rounded-lg bg-gray-50 px-6 py-8"
                 >
                   <dt className="text-base font-semibold text-gray-900">Delivery Time</dt>
